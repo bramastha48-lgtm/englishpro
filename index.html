@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f0f23">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>EnglishPro Advanced</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="splash-content">
+      <div class="splash-icon">🎓</div>
+      <h1>EnglishPro</h1>
+      <p>Advanced Learning</p>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <span class="header-logo">🎓</span>
+        <h1>EnglishPro</h1>
+      </div>
+      <div class="header-right">
+        <button class="btn-icon" id="btn-lang" title="Language">🌐</button>
+        <button class="btn-icon" id="btn-settings" title="Settings" style="margin-left:6px">⚙️</button>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- HOME -->
+      <section id="page-home" class="page active">
+        <div class="welcome-card">
+          <h2 id="welcome-text">👋 Welcome back!</h2>
+          <p id="welcome-sub">Ready to practice English today?</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><span class="stat-icon">💬</span><span class="stat-value" id="stat-conversations">0</span><span class="stat-label" data-i18n="totalConversations">Conversations</span></div>
+          <div class="stat-card"><span class="stat-icon">📝</span><span class="stat-value" id="stat-words">0</span><span class="stat-label" data-i18n="wordsLearned">Words Learned</span></div>
+          <div class="stat-card"><span class="stat-icon">🔥</span><span class="stat-value" id="stat-streak">0</span><span class="stat-label" data-i18n="streak">Day Streak</span></div>
+          <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-value" id="stat-score">0</span><span class="stat-label" data-i18n="score">Score</span></div>
+        </div>
+
+        <div class="section-title"><h3 data-i18n="achievements">Achievements</h3></div>
+        <div class="achievements-scroll" id="achievements-list"></div>
+
+        <div class="section-title"><h3>Quick Practice</h3></div>
+        <div class="quick-actions">
+          <button class="quick-card" data-action="randomConversation">
+            <span class="qa-icon">💬</span>
+            <span class="qa-text">Random Conversation</span>
+          </button>
+          <button class="quick-card" data-action="randomPronunciation">
+            <span class="qa-icon">🎤</span>
+            <span class="qa-text">Pronunciation Drill</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- CONVERSATION -->
+      <section id="page-conversation" class="page">
+        <div id="conv-list" class="conv-list"></div>
+        <div id="conv-game" class="hidden">
+          <div class="conv-header">
+            <button class="btn btn-ghost" id="btn-back-conv">← Back</button>
+            <span id="conv-title" class="conv-title"></span>
+            <span id="conv-score-badge" class="score-badge">0</span>
+          </div>
+          <div class="conv-body" id="conv-body">
+            <!-- Chat messages rendered here -->
+          </div>
+          <div id="conv-options" class="conv-options">
+            <!-- Response options -->
+          </div>
+        </div>
+        <div id="conv-result" class="hidden">
+          <div class="result-card">
+            <div class="result-icon" id="conv-result-icon">🏆</div>
+            <h2 data-i18n="conversationComplete">Conversation Complete!</h2>
+            <div class="result-scores">
+              <div class="rs-item"><span class="rs-label" data-i18n="overallScore">Overall</span><span class="rs-value" id="conv-overall">0</span></div>
+            </div>
+            <div class="result-actions">
+              <button class="btn btn-primary" id="btn-conv-again" data-i18n="practiceAgain">Practice Again</button>
+              <button class="btn btn-secondary" id="btn-conv-back" data-i18n="back">Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRONUNCIATION -->
+      <section id="page-pronunciation" class="page">
+        <div id="pron-menu" class="pron-menu">
+          <h2 data-i18n="pronunciation">Pronunciation</h2>
+          <div class="pron-cards">
+            <button class="pron-card" data-type="tongue_twisters"><span>👅</span><span data-i18n="tongueTwisters">Tongue Twisters</span></button>
+            <button class="pron-card" data-type="minimal_pairs"><span>👂</span><span data-i18n="minimalPairs">Minimal Pairs</span></button>
+            <button class="pron-card" data-type="sentences"><span>📖</span><span data-i18n="sentences">Sentence Practice</span></button>
+          </div>
+        </div>
+        <div id="pron-practice" class="hidden">
+          <div class="conv-header">
+            <button class="btn btn-ghost" id="btn-back-pron">← Back</button>
+            <span id="pron-title" class="conv-title"></span>
+            <span id="pron-counter" class="card-counter"></span>
+          </div>
+          <div class="pron-exercise">
+            <div class="pron-text-card">
+              <p id="pron-text" class="pron-text"></p>
+              <p id="pron-hint" class="pron-hint"></p>
+            </div>
+            <div class="pron-actions">
+              <button class="btn btn-sound-lg" id="btn-pron-listen">🔊 <span data-i18n="listen">Listen</span></button>
+              <button class="btn btn-mic" id="btn-pron-speak">🎤 <span data-i18n="speak">Speak</span></button>
+            </div>
+            <div id="pron-result" class="pron-result hidden">
+              <div class="pron-score-circle" id="pron-score-circle">
+                <span id="pron-score-val">0</span>
+                <small>%</small>
+              </div>
+              <p id="pron-feedback" class="pron-feedback"></p>
+              <p id="pron-transcript" class="pron-transcript"></p>
+            </div>
+          </div>
+          <div class="pron-nav">
+            <button class="btn btn-secondary" id="btn-pron-prev">← Previous</button>
+            <button class="btn btn-primary" id="btn-pron-next">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VOCABULARY -->
+      <section id="page-vocabulary" class="page">
+        <div id="vocab-menu" class="vocab-menu">
+          <h2 data-i18n="vocabulary">Vocabulary</h2>
+          <div class="vocab-cards">
+            <button class="vocab-cat-card" data-cat="idioms"><span>💡</span><span data-i18n="idioms">Idioms</span></button>
+            <button class="vocab-cat-card" data-cat="phrasalVerbs"><span>🔗</span><span data-i18n="phrasalVerbs">Phrasal Verbs</span></button>
+            <button class="vocab-cat-card" data-cat="academic"><span>🎓</span><span data-i18n="academic">Academic</span></button>
+          </div>
+        </div>
+        <div id="vocab-detail" class="hidden">
+          <div class="conv-header">
+            <button class="btn btn-ghost" id="btn-back-vocab">← Back</button>
+            <span id="vocab-cat-title" class="conv-title"></span>
+            <span id="vocab-counter" class="card-counter"></span>
+          </div>
+          <div class="vocab-flashcard">
+            <div class="vf-front" id="vf-front">
+              <span class="vf-word" id="vf-word"></span>
+              <button class="btn btn-sound-lg" id="btn-vocab-speak">🔊</button>
+            </div>
+            <div class="vf-back hidden" id="vf-back">
+              <span class="vf-meaning" id="vf-meaning"></span>
+              <span class="vf-example" id="vf-example"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btn-vocab-flip">Tap to reveal meaning</button>
+          <div class="vocab-nav">
+            <button class="btn btn-secondary" id="btn-vocab-prev">← Previous</button>
+            <button class="btn btn-primary" id="btn-vocab-next">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="page-settings" class="page">
+        <h2 style="margin-bottom:20px">⚙️ <span id="settings-title">Settings</span></h2>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <!-- API Key -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🔑 <span id="label-apikey">MiMo API Key</span></label>
+            <input type="password" id="input-apikey" class="conv-text-input" placeholder="Enter your API key..." autocomplete="off" style="width:100%" />
+            <p style="color:var(--text2);font-size:12px" id="apikey-hint">Your API key is stored locally in your browser.</p>
+          </div>
+
+          <!-- Endpoint -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🌐 <span id="label-endpoint">API Endpoint</span></label>
+            <input type="text" id="input-endpoint" class="conv-text-input" placeholder="https://api.groq.com/openai/v1/chat/completions" autocomplete="off" style="width:100%" />
+            <p style="color:var(--text2);font-size:12px" id="endpoint-hint">Default: Groq API endpoint</p>
+          </div>
+
+          <!-- Model -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🤖 <span id="label-model">Model</span></label>
+            <input type="text" id="input-model" class="conv-text-input" placeholder="llama-3.3-70b-versatile" autocomplete="off" style="width:100%" />
+            <p style="color:var(--text2);font-size:12px" id="model-hint">Default: llama-3.3-70b-versatile</p>
+          </div>
+
+          <!-- Fallback: Claude API Key -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border:1px solid var(--warning)">
+            <label style="font-weight:600;font-size:14px">🔄 Claude Fallback <span style="color:var(--warning);font-size:11px">(jika Groq limit)</span></label>
+            <input type="password" id="input-fallback-key" class="conv-text-input" placeholder="sk-ant-..." autocomplete="off" style="width:100%" />
+            <p style="color:var(--text2);font-size:12px">Auto-switch ke Claude kalau Groq kena rate limit</p>
+          </div>
+
+          <!-- Fallback: Claude Endpoint -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🌐 Claude Endpoint</label>
+            <input type="text" id="input-fallback-endpoint" class="conv-text-input" placeholder="https://api.anthropic.com/v1/messages" autocomplete="off" style="width:100%" />
+          </div>
+
+          <!-- Fallback: Claude Model -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🤖 Claude Model</label>
+            <input type="text" id="input-fallback-model" class="conv-text-input" placeholder="claude-sonnet-4-20250514" autocomplete="off" style="width:100%" />
+          </div>
+
+          <!-- Speech Speed -->
+          <div class="stat-card" style="flex-direction:column;align-items:flex-start;gap:8px;padding:16px">
+            <label style="font-weight:600;font-size:14px">🔊 <span data-i18n="speechSpeed">Speech Speed</span></label>
+            <div style="display:flex;gap:8px;width:100%">
+              <button class="btn btn-secondary btn-full speed-btn" data-speed="0.6">🐢 <span data-i18n="slow">Slow</span></button>
+              <button class="btn btn-secondary btn-full speed-btn" data-speed="0.9">🚶 <span data-i18n="normal">Normal</span></button>
+              <button class="btn btn-secondary btn-full speed-btn" data-speed="1.2">🏃 <span data-i18n="fast">Fast</span></button>
+            </div>
+          </div>
+
+          <!-- Save -->
+          <button class="btn btn-primary btn-full" id="btn-save-settings">💾 <span id="save-label">Save Settings</span></button>
+
+          <!-- Status -->
+          <div id="settings-status" style="text-align:center;font-size:13px;color:var(--text2)"></div>
+        </div>
+      </section>
+
+      <!-- MORE / IELTS -->
+      <section id="page-more" class="page">
+        <h2 class="page-title" data-i18n="ielts">IELTS/TOEFL</h2>
+        <div class="ielts-section">
+          <h3>🎤 <span data-i18n="speaking">Speaking</span> - <span data-i18n="part">Part</span> 1</h3>
+          <div id="ielts-part1" class="ielts-cards"></div>
+        </div>
+        <div class="ielts-section">
+          <h3>🎤 <span data-i18n="speaking">Speaking</span> - <span data-i18n="part">Part</span> 2</h3>
+          <div id="ielts-part2" class="ielts-cards"></div>
+        </div>
+        <div class="ielts-section">
+          <h3>🎧 <span data-i18n="listening">Listening</span> - <span data-i18n="dictation">Dictation</span></h3>
+          <div id="ielts-dictation" class="ielts-cards"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home"><span class="nav-icon">🏠</span><span class="nav-label" data-i18n="home">Home</span></button>
+      <button class="nav-item" data-page="conversation"><span class="nav-icon">💬</span><span class="nav-label" data-i18n="conversation">Conversation</span></button>
+      <button class="nav-item" data-page="pronunciation"><span class="nav-icon">🎤</span><span class="nav-label" data-i18n="pronunciation">Pronunciation</span></button>
+      <button class="nav-item" data-page="vocabulary"><span class="nav-icon">📚</span><span class="nav-label" data-i18n="vocabulary">Vocabulary</span></button>
+      <button class="nav-item" data-page="more"><span class="nav-icon">📖</span><span class="nav-label" data-i18n="more">More</span></button>
+    </nav>
+  </div>
+
+  <script src="js/data.js?v=3"></script>
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>
