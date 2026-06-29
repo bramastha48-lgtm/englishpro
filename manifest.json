@@ -2,7 +2,7 @@
   "name": "EnglishPro - Belajar Bahasa Inggris",
   "short_name": "EnglishPro",
   "description": "Aplikasi belajar bahasa Inggris untuk pemula hingga lanjutan",
-  "start_url": "/index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0f23",
   "theme_color": "#6c63ff",
