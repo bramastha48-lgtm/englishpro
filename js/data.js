@@ -853,6 +853,7 @@ const APP_DATA = {
       newConversation: 'New Conversation',
       freeChat: 'Free Chat',
       freeChatDesc: 'Talk about anything you want',
+      dictionary: 'Dictionary',
     },
     id: {
       appTitle: 'EnglishPro Advanced',
@@ -945,6 +946,7 @@ const APP_DATA = {
       newConversation: 'Percakapan Baru',
       freeChat: 'Ngobrol Bebas',
       freeChatDesc: 'Bicara tentang apa saja',
+      dictionary: 'Kamus',
     }
   }
 };

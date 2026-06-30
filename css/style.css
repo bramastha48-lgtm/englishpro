@@ -243,3 +243,49 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 
 /* AI Chat scroll fix */
 #aichat-body{overflow-y:auto;-webkit-overflow-scrolling:touch}
+
+/* ==========================================
+   Dictionary Feature
+   ========================================== */
+.dict-search{margin-bottom:20px}
+.dict-search h2{font-size:22px;font-weight:700;margin-bottom:16px;text-align:center}
+.dict-input-wrap{display:flex;gap:8px;align-items:center}
+.dict-input-wrap .conv-text-input{flex:1;font-size:16px;padding:14px 18px;text-transform:none}
+.dict-input-wrap .btn{flex-shrink:0;width:52px;height:52px;padding:0;font-size:22px;border-radius:var(--r2)}
+.dict-suggestions{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);margin-top:6px;max-height:200px;overflow-y:auto;position:relative;z-index:10}
+.dict-suggestion-item{padding:12px 16px;cursor:pointer;font-size:14px;color:var(--text);transition:var(--tr);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.dict-suggestion-item:last-child{border-bottom:none}
+.dict-suggestion-item:active{background:rgba(108,99,255,.1)}
+.dict-suggestion-item .sg-word{font-weight:600}
+.dict-loading{text-align:center;padding:20px}
+.dict-error{animation:fi .3s ease-out}
+.dict-word-header{display:flex;align-items:center;justify-content:space-between;background:var(--g1);border-radius:var(--r);padding:24px 20px;margin-bottom:20px}
+.dict-word-main{flex:1}
+.dict-word-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:4px}
+.dict-phonetic{font-size:16px;color:rgba(255,255,255,.7);font-style:italic}
+.dict-word-actions{display:flex;gap:8px;align-items:center}
+.dict-word-actions .btn-sound-lg{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;padding:12px 16px;font-size:20px}
+.dict-word-actions .btn-ghost{color:#fff;font-size:22px;padding:10px 12px}
+.dict-word-actions .btn-ghost.saved{color:var(--warning)}
+.dict-meanings{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
+.dict-meaning-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px 16px;animation:fi .3s ease-out}
+.dict-pos{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--primary-light);background:rgba(108,99,255,.15);padding:4px 12px;border-radius:var(--r3);margin-bottom:12px;letter-spacing:.5px}
+.dict-definition{margin-bottom:10px}
+.dict-def-text{font-size:15px;color:var(--text);line-height:1.6;margin-bottom:4px}
+.dict-def-number{font-size:13px;font-weight:700;color:var(--primary-light);margin-right:6px}
+.dict-def-example{font-size:13px;color:var(--text2);font-style:italic;padding-left:16px;border-left:3px solid var(--border);margin-top:6px}
+.dict-definition+.dict-definition{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.dict-syn-section{margin-bottom:16px}
+.dict-section-title{font-size:14px;font-weight:700;color:var(--text3);margin-bottom:10px}
+.dict-tag-list{display:flex;flex-wrap:wrap;gap:8px}
+.dict-tag{font-size:13px;padding:6px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);color:var(--primary-light);cursor:pointer;transition:var(--tr);font-family:inherit}
+.dict-tag:active{background:rgba(108,99,255,.15);border-color:var(--primary)}
+.dict-source{margin-top:16px;text-align:center}
+.dict-source small{color:var(--text2);font-size:11px}
+.dict-history{margin-top:24px}
+.dict-history-list{display:flex;flex-wrap:wrap;gap:8px}
+.dict-history-item{font-size:13px;padding:8px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);color:var(--text);cursor:pointer;transition:var(--tr);font-family:inherit;display:flex;align-items:center;gap:6px}
+.dict-history-item:active{transform:scale(.95);border-color:var(--primary)}
+.dict-history-clear{font-size:12px;padding:6px 12px;background:transparent;border:1px solid var(--border);border-radius:var(--r3);color:var(--text2);cursor:pointer;transition:var(--tr);font-family:inherit}
+.dict-result{animation:fi .3s ease-out}
+@media(max-width:360px){.dict-word-title{font-size:24px}.dict-phonetic{font-size:14px}}

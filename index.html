@@ -8,7 +8,7 @@
   <title>EnglishPro Advanced</title>
   <link rel="manifest" href="manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <!-- SPLASH -->
@@ -173,6 +173,59 @@
         </div>
       </section>
 
+      <!-- DICTIONARY -->
+      <section id="page-dictionary" class="page">
+        <div id="dict-search" class="dict-search">
+          <h2 data-i18n="dictionary">📖 Dictionary</h2>
+          <div class="dict-input-wrap">
+            <input type="text" id="dict-input" class="conv-text-input" placeholder="Search a word..." autocomplete="off" />
+            <button id="btn-dict-search" class="btn btn-primary">🔍</button>
+          </div>
+          <div id="dict-suggestions" class="dict-suggestions hidden"></div>
+        </div>
+        <div id="dict-loading" class="dict-loading hidden">
+          <div class="splash-loader" style="margin:40px auto"></div>
+          <p style="text-align:center;color:var(--text2);font-size:14px">Searching...</p>
+        </div>
+        <div id="dict-error" class="dict-error hidden">
+          <div style="text-align:center;padding:40px 20px">
+            <div style="font-size:64px;margin-bottom:16px">😕</div>
+            <h3 id="dict-error-title" style="margin-bottom:8px">Word not found</h3>
+            <p id="dict-error-text" style="color:var(--text2);font-size:14px">Try searching for another word.</p>
+          </div>
+        </div>
+        <div id="dict-result" class="dict-result hidden">
+          <div class="dict-word-header">
+            <div class="dict-word-main">
+              <h2 id="dict-word" class="dict-word-title"></h2>
+              <span id="dict-phonetic" class="dict-phonetic"></span>
+            </div>
+            <div class="dict-word-actions">
+              <button class="btn btn-sound-lg" id="btn-dict-speak" title="Listen">🔊</button>
+              <button class="btn btn-ghost" id="btn-dict-save" title="Save word">☆</button>
+            </div>
+          </div>
+          <div id="dict-meanings" class="dict-meanings"></div>
+          <div id="dict-synonyms" class="dict-syn-section hidden">
+            <h4 class="dict-section-title">🔗 <span id="dict-syn-label">Synonyms</span></h4>
+            <div id="dict-syn-list" class="dict-tag-list"></div>
+          </div>
+          <div id="dict-antonyms" class="dict-syn-section hidden">
+            <h4 class="dict-section-title">↔️ <span id="dict-ant-label">Antonyms</span></h4>
+            <div id="dict-ant-list" class="dict-tag-list"></div>
+          </div>
+          <div id="dict-source" class="dict-source hidden">
+            <small id="dict-source-url"></small>
+          </div>
+        </div>
+        <div id="dict-history" class="dict-history">
+          <div class="section-title" style="margin-bottom:12px">
+            <h3>🕐 <span id="dict-history-title">Recent Searches</span></h3>
+          </div>
+          <div id="dict-history-list" class="dict-history-list"></div>
+        </div>
+      </section>
+
       <!-- SETTINGS -->
       <section id="page-settings" class="page">
         <h2 style="margin-bottom:20px">⚙️ <span id="settings-title">Settings</span></h2>
@@ -260,11 +313,12 @@
       <button class="nav-item" data-page="conversation"><span class="nav-icon">💬</span><span class="nav-label" data-i18n="conversation">Conversation</span></button>
       <button class="nav-item" data-page="pronunciation"><span class="nav-icon">🎤</span><span class="nav-label" data-i18n="pronunciation">Pronunciation</span></button>
       <button class="nav-item" data-page="vocabulary"><span class="nav-icon">📚</span><span class="nav-label" data-i18n="vocabulary">Vocabulary</span></button>
-      <button class="nav-item" data-page="more"><span class="nav-icon">📖</span><span class="nav-label" data-i18n="more">More</span></button>
+      <button class="nav-item" data-page="dictionary"><span class="nav-icon">📖</span><span class="nav-label" data-i18n="dictionary">Dictionary</span></button>
+      <button class="nav-item" data-page="more"><span class="nav-icon">📋</span><span class="nav-label" data-i18n="more">More</span></button>
     </nav>
   </div>
 
-  <script src="js/data.js?v=3"></script>
-  <script src="js/app.js?v=3"></script>
+  <script src="js/data.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
 </body>
 </html>
